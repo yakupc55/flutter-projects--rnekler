@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/categories.dart';
+import 'package:flutter_application_1/components/bottomNavigation.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,107 +12,83 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double screnWidthvalue = MediaQuery.of(context).size.width;
     return Scaffold(
-        body: SafeArea(
-          child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: ListView(
-                children: [
-                  // Başlık
-                  buidBaslik(),
-
-                  //Banner
-                  buildBanner(),
-
-                  //Butonlar
-                  Padding(
-                    padding: EdgeInsets.only(top: 48),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // ilk eleman
-                        buidNavigation(
-                            text: "Categories",
-                            icon: Icons.home,
-                            widget: CategoriesPage(),
-                            context: context),
-                        buidNavigation(text: "Favorites", icon: Icons.star),
-                        buidNavigation(
-                            text: "Gifts", icon: Icons.card_giftcard),
-                        buidNavigation(
-                            text: "Best selling", icon: Icons.people),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40),
-                  //Sales title
-                  Text(
-                    "Sales",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                        color: Color(0xff0a1034)),
-                  ),
-                  SizedBox(height: 16),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      buidSalesItem(
-                          text: "Smartphones",
-                          photoUrl: "assets/images/phone.png",
-                          discount: "-50%",
-                          screenWidth: screnWidthvalue),
-                      buidSalesItem(
-                          text: "Smartphones",
-                          photoUrl: "assets/images/phone.png",
-                          discount: "-50%",
-                          screenWidth: screnWidthvalue),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      buidSalesItem(
-                          text: "Smartphones",
-                          photoUrl: "assets/images/phone.png",
-                          discount: "-50%",
-                          screenWidth: screnWidthvalue),
-                      buidSalesItem(
-                          text: "Smartphones",
-                          photoUrl: "assets/images/phone.png",
-                          discount: "-50%",
-                          screenWidth: screnWidthvalue),
-                    ],
-                  ),
-
-                  // buttom navigation bar
-                ],
-              )),
-        ),
-        bottomNavigationBar: Container(
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                  offset: Offset(0, -3),
-                  color: Colors.black.withOpacity(0.25),
-                  blurRadius: 10),
-            ], color: Color(0xffeff5fb)),
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 20),
-            //color: Color(0xffefff5fb),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: SafeArea(
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ListView(
               children: [
-                buildNavIcon(iconData: Icons.home_filled, active: true),
-                buildNavIcon(iconData: Icons.search, active: false),
-                buildNavIcon(iconData: Icons.shopping_basket, active: false),
-                buildNavIcon(iconData: Icons.person, active: false),
-              ],
-            )));
-  }
+                // Başlık
+                buidBaslik(),
 
-  Widget buildNavIcon({@required IconData iconData, @required bool active}) {
-    return Icon(iconData,
-        size: 20, color: Color(active ? 0xff0001fc : 0xff0a1034));
+                //Banner
+                buildBanner(),
+
+                //Butonlar
+                Padding(
+                  padding: EdgeInsets.only(top: 48),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // ilk eleman
+                      buidNavigation(
+                          text: "Categories",
+                          icon: Icons.menu,
+                          widget: CategoriesPage(),
+                          context: context),
+                      buidNavigation(text: "Favorites", icon: Icons.star),
+                      buidNavigation(text: "Gifts", icon: Icons.card_giftcard),
+                      buidNavigation(text: "Best selling", icon: Icons.people),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 40),
+                //Sales title
+                Text(
+                  "Sales",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                      color: Color(0xff0a1034)),
+                ),
+                SizedBox(height: 16),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    buidSalesItem(
+                        text: "Smartphones",
+                        photoUrl: "assets/images/phone.png",
+                        discount: "-50%",
+                        screenWidth: screnWidthvalue),
+                    buidSalesItem(
+                        text: "Smartphones",
+                        photoUrl: "assets/images/phone.png",
+                        discount: "-50%",
+                        screenWidth: screnWidthvalue),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    buidSalesItem(
+                        text: "Smartphones",
+                        photoUrl: "assets/images/phone.png",
+                        discount: "-50%",
+                        screenWidth: screnWidthvalue),
+                    buidSalesItem(
+                        text: "Smartphones",
+                        photoUrl: "assets/images/phone.png",
+                        discount: "-50%",
+                        screenWidth: screnWidthvalue),
+                  ],
+                ),
+
+                // buttom navigation bar
+              ],
+            )),
+      ),
+      bottomNavigationBar: bottomNavigation(),
+    );
   }
 
   Widget buidBaslik() {
