@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/categories.dart';
 import 'package:flutter_application_1/components/bottomNavigation.dart';
+import 'package:flutter_application_1/components/label.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -87,7 +88,7 @@ class _HomePageState extends State<HomePage> {
               ],
             )),
       ),
-      bottomNavigationBar: bottomNavigation(),
+      bottomNavigationBar: bottomNavigation("home"),
     );
   }
 
@@ -191,14 +192,7 @@ Widget buidSalesItem({
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // %50
-        Container(
-          padding: EdgeInsets.only(top: 4, left: 0, right: 4, bottom: 4),
-          width: 40,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2), color: Color(0xffe0ecf8)),
-          child: Text(discount,
-              style: TextStyle(color: Color(0xff1f53e4), fontSize: 12)),
-        ),
+        label(discount),
         // telefon resmi
         SizedBox(height: 22),
         Center(

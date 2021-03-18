@@ -38,16 +38,16 @@ class CategoriesPage extends StatelessWidget {
                   ]))
         ],
       )),
-      bottomNavigationBar: bottomNavigation(),
+      bottomNavigationBar: bottomNavigation("search"),
     );
   }
 }
 
-Widget buildCategories(String text, context) {
+Widget buildCategories(String title, context) {
   return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return CategoryPage();
+          return new CategoryPage(title);
         }));
       },
       child: Container(
@@ -64,7 +64,7 @@ Widget buildCategories(String text, context) {
                 offset: Offset(0, 4),
               ),
             ]),
-        child: Text(text,
+        child: Text(title,
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,

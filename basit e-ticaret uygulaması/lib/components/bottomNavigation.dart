@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget bottomNavigation() {
+Widget bottomNavigation(String page) {
   return Container(
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
@@ -15,10 +15,10 @@ Widget bottomNavigation() {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          buildNavIcon(iconData: Icons.home_filled, active: true),
-          buildNavIcon(iconData: Icons.search, active: false),
-          buildNavIcon(iconData: Icons.shopping_basket, active: false),
-          buildNavIcon(iconData: Icons.person, active: false),
+          buildNavIcon(iconData: Icons.home_filled, active: page == "home"),
+          buildNavIcon(iconData: Icons.search, active: page == "search"),
+          buildNavIcon(iconData: Icons.shopping_basket, active: page == "card"),
+          buildNavIcon(iconData: Icons.person, active: page == "profile"),
         ],
       ));
 }
